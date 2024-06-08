@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="assets/css/vendor/slick-theme.css" />
     <link rel="stylesheet" href="assets/css/vendor/aos.css" />
     <link rel="stylesheet" href="assets/css/plugins/feature.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Style css -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
@@ -86,7 +90,9 @@
             <div class="header-right">
               <!-- <a class="rn-btn" target="_blank" href="https://themeforest.net/checkout/from_item/33188244?license=regular"><span>BUY NOW</span></a> -->
               <div class="hamberger-menu d-block d-xl-none">
-                <i id="menuBtn" class="feather-menu humberger-menu"></i>
+                <i id="menuBtn" class="feather-menu humberger-menu"
+                  ><i class="fa-solid fa-bars"></i>
+                </i>
               </div>
               <div class="close-menu d-block">
                 <span class="closeTrigger">
@@ -146,7 +152,7 @@
             </li>
           </ul>
           <!-- social sharea area -->
-          <div class="social-share-style-1 mt--40">
+          <!-- <div class="social-share-style-1 mt--40">
             <span class="title">find with me</span>
             <ul class="social-share d-flex liststyle">
               <li class="facebook">
@@ -219,7 +225,7 @@
                 ></a>
               </li>
             </ul>
-          </div>
+          </div> -->
           <!-- end -->
         </div>
       </div>
@@ -1777,19 +1783,21 @@
             <div data-aos-delay="600" class="col-lg-7 contact-input">
               <div class="contact-form-wrapper">
                 <div class="introduce">
+                  <!-- <?php if (!empty($success_message)) { echo '<p class="success">'.$success_message.'</p>'; } ?>
+                  <?php if (!empty($error_message)) { echo '<p class="error">'.$error_message.'</p>'; } ?> -->
                   <form
                     class="rnt-contact-form rwt-dynamic-form row"
-                    id="contact-form"
-                    action="https://formspree.io/f/xoqgogng"
-                    method="POST"
+                    id="form"
+                    action="process_form.php"
+                    method="post"
                   >
                     <div class="col-lg-6">
                       <div class="form-group">
                         <label for="contact-name">Your Name</label>
                         <input
                           class="form-control form-control-lg"
-                          name="contact-name"
-                          id="contact-name"
+                          name="name"
+                          id="name"
                           type="text"
                         />
                       </div>
@@ -1797,12 +1805,14 @@
 
                     <div class="col-lg-6">
                       <div class="form-group">
-                        <label for="contact-phone">Phone Number</label>
+                        <label for="phone">Phone Number</label>
                         <input
                           class="form-control"
-                          name="contact-phone"
+                          name="number"
                           id="contact-phone"
                           type="text"
+                          oninput="numberOnly(this.id);"
+                          maxlength="10"
                         />
                       </div>
                     </div>
@@ -1812,8 +1822,8 @@
                         <label for="contact-email">Email</label>
                         <input
                           class="form-control form-control-sm"
-                          id="contact-email"
-                          name="contact-email"
+                          id="email"
+                          name="email"
                           type="email"
                         />
                       </div>
@@ -1824,7 +1834,7 @@
                         <label for="subject">subject</label>
                         <input
                           class="form-control form-control-sm"
-                          id="subject"
+                          id="subjectt"
                           name="subject"
                           type="text"
                         />
@@ -1835,8 +1845,8 @@
                       <div class="form-group">
                         <label for="contact-message">Your Message</label>
                         <textarea
-                          name="contact-message"
-                          id="contact-message"
+                          name="message"
+                          id="message"
                           cols="30"
                           rows="10"
                         ></textarea>
@@ -2943,6 +2953,21 @@
     </main>
     <!-- Start Footer Area -->
     <!-- End Footer Area -->
+    <script>
+      // form validation
+      function numberOnly(id) {
+        // Get element by id which passed as parameter within HTML element event
+        var element = document.getElementById(id);
+        // This removes any other character but numbers as entered by user
+        element.value = element.value.replace(/[^0-9]/gi, "");
+      }
+      let email = document.getElementById("contact-email");
+
+      function validateEmail() {
+        var re = /\S+@\S+\.\S+/;
+        return re.test(email);
+      }
+    </script>
     <!-- JS ============================================ -->
     <script src="assets/js/vendor/jquery.js"></script>
     <script src="assets/js/vendor/modernizer.min.js"></script>
